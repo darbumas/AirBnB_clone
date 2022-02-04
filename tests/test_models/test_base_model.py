@@ -61,3 +61,14 @@ class TestBaseModel(unittest.TestCase):
                 self.assertIsInstance(val, str)
             if key == 'updated_at':
                 self.assertIsInstance(val, str)
+
+    def test_instance_from_dict(self):
+        '''test creating an instance from a dictionary'''
+        my_model = BaseModel()
+        my_dict = my_model.to_dict()
+        new_model = BaseModel(**my_dict)
+        new_model_dict = new_model.to_dict()
+        self.assertIsInstance(new_model, BaseModel)
+        self.assertIsInstance(new_model_dict, dict)
+        self.assertFalse(new_model is my_model)
+        self.assertTrue(new_model.id == my_model.id)
