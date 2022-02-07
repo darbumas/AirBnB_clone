@@ -4,15 +4,17 @@ and methods for other classes in the project"""
 
 from uuid import uuid4
 from datetime import datetime
+import models
 
 
 class BaseModel:
     '''class defines common attributes and methods for other classes'''
     def __init__(self, *args, **kwargs):
-        if len(kwargs) == 0:
+        if not kwargs or len(kwargs) == 0:
             self.id = str(uuid4())
             self.created_at = datetime.now()
             self.updated_at = datetime.now()
+            models.storage.new(self)
         else:
             for key, value in kwargs.items():
                 if key in ('created_at', 'updated_at'):
@@ -31,6 +33,7 @@ class BaseModel:
         '''instance method to update public attribute [updated_at] with current
         datetime'''
         self.updated_at = datetime.now()
+        models.storage.save()
 
     def to_dict(self):
         '''instance method returns a dictionary with keys/values of __dict__
