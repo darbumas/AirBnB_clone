@@ -3,14 +3,14 @@
 
 import cmd, sys
 from models.base_model import BaseModel
-from models.engine.file_storage import FileStorage
+from models.user import User
 import models
 
 
 class HBNBCommand(cmd.Cmd):
     """class to handle commands to the console"""
-    instance_dict = {'BaseModel': BaseModel}
-    prompt = '(hbnb) '
+    instance_dict = {'BaseModel': BaseModel, "User": User}
+    prompt = '(hbnb)'
 
     def do_quit(self, *args):
         '''Quit command to exit the program'''
