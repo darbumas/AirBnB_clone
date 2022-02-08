@@ -31,8 +31,7 @@ class TestBaseModel(unittest.TestCase):
         '''test the __str__() method'''
         my_model = BaseModel()
         official_str = str(my_model)
-        expected_str = "[BaseModel] ({}) {}".format(my_model.id,
-                                                    my_model.__dict__)
+        expected_str = f"[BaseModel] ({my_model.id}) {my_model.__dict__}"
         self.assertEqual(official_str, expected_str)
 
     def test_save(self):
