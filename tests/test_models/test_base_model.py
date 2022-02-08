@@ -71,3 +71,6 @@ class TestBaseModel(unittest.TestCase):
         self.assertIsInstance(new_model_dict, dict)
         self.assertFalse(new_model is my_model)
         self.assertTrue(new_model.id == my_model.id)
+
+if __name__ == '__main__':
+    unittest.main()
