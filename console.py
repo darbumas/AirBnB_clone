@@ -1,15 +1,22 @@
 #!/usr/bin/python3
 """Module contains the entry point of the command interpreter"""
 
-import cmd, sys
+import cmd
 from models.base_model import BaseModel
 from models.user import User
+from models.place import Place
+from models.state import State
+from models.city import City
+from models.amenity import Amenity
+from models.review import Review
 import models
 
 
 class HBNBCommand(cmd.Cmd):
     """class to handle commands to the console"""
-    instance_dict = {'BaseModel': BaseModel, "User": User}
+    instance_dict = {'BaseModel': BaseModel, 'User': User, 'Place': Place,
+                     'State': State, 'City': City, 'Amenity': Amenity,
+                     'Review': Review}
     prompt = '(hbnb)'
 
     def do_quit(self, *args):
@@ -74,7 +81,7 @@ class HBNBCommand(cmd.Cmd):
     def do_all(self, arg):
         '''Prints all string representation of all instances based or not on the
         class name'''
-        cmds  = arg.split(" ")
+        cmds = arg.split(" ")
         my_dict = models.storage.all()
         if len(arg) == 0:
             for v in my_dict.values():
