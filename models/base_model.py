@@ -10,7 +10,7 @@ import models
 class BaseModel:
     '''class defines common attributes and methods for other classes'''
     def __init__(self, *args, **kwargs):
-        if not kwargs or len(kwargs) == 0:
+        if len(kwargs) == 0:
             self.id = str(uuid4())
             self.created_at = datetime.now()
             self.updated_at = datetime.now()
