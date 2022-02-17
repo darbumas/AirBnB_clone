@@ -59,6 +59,7 @@
     list-style-type: none;
     padding-left: 15px;
     display: none;
+    position: relative;
 }
 .popover ul {
     list-style-type: none;
